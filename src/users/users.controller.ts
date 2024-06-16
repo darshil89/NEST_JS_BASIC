@@ -9,42 +9,49 @@ import {
   Query,
 } from '@nestjs/common';
 
+import { UsersService } from './users.service';
+
 @Controller('users')
 export class UsersController {
-  @Get() // GET /users or GET /users/?role=value&name=value
-  getAllUsers(
-    @Query('role') role?: 'INTERN' | 'MANAGER' | 'ADMIN',
-    @Query('name') name?: string,
-  ) {
-    return { role, name };
-  }
+  constructor(private usersService: UsersService) {}
 
-  @Get('interns')
-  getIntern() {
-    return 'This action returns all interns';
+  @Get() // GET /users or GET /users/?role=value&name=value
+  getAllUsers(@Query('role') role?: 'INTERN' | 'MANAGER' | 'ADMIN') {
+    return this.usersService.getAllUsers(role);
   }
 
   @Get(':id')
   getOneUser(@Param('id') id: string) {
-    return { id: id };
+    return this.usersService.getOneUser(+id);
   }
 
   @Post()
-  createUser(@Body() user: { name: string; age: number }) {
-    return user;
+  createUser(
+    @Body()
+    user: {
+      name: string;
+      age: number;
+      role?: 'INTERN' | 'MANAGER' | 'ADMIN';
+    },
+  ) {
+    return this.usersService.createUser(user);
   }
 
   @Patch(':id')
   updateOneUser(
     @Param('id') id: string,
-    @Body() userUpdate: { name: string; age: number },
+    @Body()
+    userUpdate: {
+      name?: string;
+      age?: number;
+      role?: 'INTERN' | 'MANAGER' | 'ADMIN';
+    },
   ) {
-    
-    return { id: id, ...userUpdate };
+    return this.usersService.updateOneUser(+id, userUpdate);
   }
 
   @Delete(':id')
   deleteUser(@Param('id') id: string) {
-    return { id: id };
+    return this.usersService.deleteUser(+id);
   }
 }
