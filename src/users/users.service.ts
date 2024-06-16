@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UsersService {
-  private users = [
+  private data = [
     {
       id: 1,
       name: 'John Doe',
@@ -29,31 +29,37 @@ export class UsersService {
     },
   ];
 
-  getAllUsers(role?: 'INTERN' | 'MANAGER' | 'ADMIN') {
+  getAllUsers() {
+    return this.data;
+  }  
+
+  getAllUsersByFilter(role?: 'INTERN' | 'MANAGER' | 'ADMIN') {
     if (role) {
-      return this.users.filter((user) => user.role === role);
+      return this.data.filter((user) => user.role === role);
     }
-    return this.users;
+    return this.data;
   }
 
   getOneUser(id: number) {
-    const user = this.users.find((user) => user.id === id);
+    const user = this.data.find((user) => user.id === id);
     return user;
   }
 
   createUser(user: {
     name: string;
     age: number;
-    role?: 'INTERN' | 'MANAGER' | 'ADMIN';
+    role: 'INTERN' | 'MANAGER' | 'ADMIN';
   }) {
-    const userByHighestId = this.users.reduce((prev, current) =>
+    const userByHighestId = this.data.reduce((prev, current) =>
       prev.id > current.id ? prev : current,
     );
 
     const newUser = {
-      id: String(Number(userByHighestId.id) + 1),
+      id: (Number(userByHighestId.id) + 1),
       ...user,
     };
+
+    this.data.push(newUser);
 
     return newUser;
   }
@@ -66,7 +72,7 @@ export class UsersService {
       role?: 'INTERN' | 'MANAGER' | 'ADMIN';
     },
   ) {
-    this.users = this.users.map((user) => {
+    this.data = this.data.map((user) => {
       if (user.id === id) {
         return { ...user, ...userUpdate };
       }
@@ -77,7 +83,7 @@ export class UsersService {
 
   deleteUser(id: number) {
     const removedUser = this.getOneUser(id);
-    this.users = this.users.filter((user) => user.id !== id);
+    this.data = this.data.filter((user) => user.id !== id);
     return removedUser;
   }
 }

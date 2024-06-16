@@ -16,8 +16,13 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get() // GET /users or GET /users/?role=value&name=value
-  getAllUsers(@Query('role') role?: 'INTERN' | 'MANAGER' | 'ADMIN') {
-    return this.usersService.getAllUsers(role);
+  getAllUsersByFilter(@Query('role') role?: 'INTERN' | 'MANAGER' | 'ADMIN') {
+    return this.usersService.getAllUsersByFilter(role);
+  }
+
+  @Get()
+  getAllUsers() {
+    return this.usersService.getAllUsers();
   }
 
   @Get(':id')
@@ -31,7 +36,7 @@ export class UsersController {
     user: {
       name: string;
       age: number;
-      role?: 'INTERN' | 'MANAGER' | 'ADMIN';
+      role: 'INTERN' | 'MANAGER' | 'ADMIN';
     },
   ) {
     return this.usersService.createUser(user);
