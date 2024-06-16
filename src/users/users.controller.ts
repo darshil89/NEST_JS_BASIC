@@ -11,17 +11,12 @@ import {
 
 @Controller('users')
 export class UsersController {
-  /* 
-    GET /users
-    GET /users/:id
-    POST /users
-    PATCH /users/:id
-    DELETE /users/:id
-    */
-
   @Get() // GET /users or GET /users/?role=value&name=value
-  getAllUsers(@Query('role') role?: 'INTERN' | 'MANAGER' | 'ADMIN', @Query('name') name?: string) {
-    return {  role, name };
+  getAllUsers(
+    @Query('role') role?: 'INTERN' | 'MANAGER' | 'ADMIN',
+    @Query('name') name?: string,
+  ) {
+    return { role, name };
   }
 
   @Get('interns')
@@ -44,6 +39,7 @@ export class UsersController {
     @Param('id') id: string,
     @Body() userUpdate: { name: string; age: number },
   ) {
+    
     return { id: id, ...userUpdate };
   }
 
