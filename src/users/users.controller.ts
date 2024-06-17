@@ -8,6 +8,7 @@ import {
   Post,
   Query,
   ParseIntPipe,
+  ValidationPipe,
 } from '@nestjs/common';
 
 import { UsersService } from './users.service';
@@ -36,9 +37,10 @@ export class UsersController {
     return this.usersService.getOneUser(id);
   }
 
+  // ValidationPipe is used to validate the incoming data from the client
   @Post()
   createUser(
-    @Body()
+    @Body(ValidationPipe)
     createUserDto: CreateUserDto,
   ) {
     return this.usersService.createUser(createUserDto);
@@ -47,7 +49,7 @@ export class UsersController {
   @Patch(':id')
   updateOneUser(
     @Param('id', ParseIntPipe) id: number,
-    @Body()
+    @Body(ValidationPipe)
     updateUserDto: UpdateUserDto,
   ) {
     return this.usersService.updateOneUser(id, updateUserDto);
