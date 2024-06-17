@@ -7,9 +7,13 @@ import {
   Patch,
   Post,
   Query,
+  ParseIntPipe,
 } from '@nestjs/common';
 
 import { UsersService } from './users.service';
+
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -25,38 +29,32 @@ export class UsersController {
     return this.usersService.getAllUsers();
   }
 
+  // As we get string form the params we need to convert it to number . 
+  // So we use ParseIntPipe to transform the string to number
   @Get(':id')
-  getOneUser(@Param('id') id: string) {
-    return this.usersService.getOneUser(+id);
+  getOneUser(@Param('id', ParseIntPipe) id: number) {
+    return this.usersService.getOneUser(id);
   }
 
   @Post()
   createUser(
     @Body()
-    user: {
-      name: string;
-      age: number;
-      role: 'INTERN' | 'MANAGER' | 'ADMIN';
-    },
+    createUserDto: CreateUserDto,
   ) {
-    return this.usersService.createUser(user);
+    return this.usersService.createUser(createUserDto);
   }
 
   @Patch(':id')
   updateOneUser(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body()
-    userUpdate: {
-      name?: string;
-      age?: number;
-      role?: 'INTERN' | 'MANAGER' | 'ADMIN';
-    },
+    updateUserDto: UpdateUserDto,
   ) {
-    return this.usersService.updateOneUser(+id, userUpdate);
+    return this.usersService.updateOneUser(id, updateUserDto);
   }
 
   @Delete(':id')
-  deleteUser(@Param('id') id: string) {
-    return this.usersService.deleteUser(+id);
+  deleteUser(@Param('id' , ParseIntPipe) id: number) {
+    return this.usersService.deleteUser(id);
   }
 }

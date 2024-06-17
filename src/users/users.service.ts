@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -31,7 +33,7 @@ export class UsersService {
 
   getAllUsers() {
     return this.data;
-  }  
+  }
 
   getAllUsersByFilter(role?: 'INTERN' | 'MANAGER' | 'ADMIN') {
     if (role) {
@@ -45,18 +47,14 @@ export class UsersService {
     return user;
   }
 
-  createUser(user: {
-    name: string;
-    age: number;
-    role: 'INTERN' | 'MANAGER' | 'ADMIN';
-  }) {
+  createUser(createUserDto: CreateUserDto) {
     const userByHighestId = this.data.reduce((prev, current) =>
       prev.id > current.id ? prev : current,
     );
 
     const newUser = {
-      id: (Number(userByHighestId.id) + 1),
-      ...user,
+      id: Number(userByHighestId.id) + 1,
+      ...createUserDto,
     };
 
     this.data.push(newUser);
@@ -66,15 +64,11 @@ export class UsersService {
 
   updateOneUser(
     id: number,
-    userUpdate: {
-      name?: string;
-      age?: number;
-      role?: 'INTERN' | 'MANAGER' | 'ADMIN';
-    },
+    updateUserDto: UpdateUserDto,
   ) {
     this.data = this.data.map((user) => {
       if (user.id === id) {
-        return { ...user, ...userUpdate };
+        return { ...user, ...updateUserDto };
       }
       return user;
     });
@@ -87,3 +81,5 @@ export class UsersService {
     return removedUser;
   }
 }
+
+// this lower case userUpdateDto is just a abbreviation
