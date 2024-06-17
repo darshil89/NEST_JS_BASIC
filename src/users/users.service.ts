@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class UsersService {
@@ -37,13 +38,19 @@ export class UsersService {
 
   getAllUsersByFilter(role?: 'INTERN' | 'MANAGER' | 'ADMIN') {
     if (role) {
-      return this.data.filter((user) => user.role === role);
+      const rolesArray =  this.data.filter((user) => user.role === role);
+
+      if(rolesArray.length === 0) throw new NotFoundException(`No user with role ${role}`);
+
+      return rolesArray;
     }
     return this.data;
   }
 
   getOneUser(id: number) {
     const user = this.data.find((user) => user.id === id);
+
+    if (!user) throw new NotFoundException(`User with id ${id} not found`);
     return user;
   }
 
@@ -62,10 +69,7 @@ export class UsersService {
     return newUser;
   }
 
-  updateOneUser(
-    id: number,
-    updateUserDto: UpdateUserDto,
-  ) {
+  updateOneUser(id: number, updateUserDto: UpdateUserDto) {
     this.data = this.data.map((user) => {
       if (user.id === id) {
         return { ...user, ...updateUserDto };
