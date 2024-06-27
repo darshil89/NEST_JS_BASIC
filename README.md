@@ -35,8 +35,7 @@ NestJS offers several compelling features that make it an excellent choice for b
 ## 🐳 Creating and Deploying a Docker Image
 
 As a DevOps enthusiast, it was practically impossible for me to resist containerizing this application! 🐳 Therefore, this app is dockerized with both development and production builds. 🚀💻
-
-([Docker Hub](https://hub.docker.com/repository/docker/mahraurdarshil89/nest-js-basics/general))
+Here is the link to the image - ([Docker Hub](https://hub.docker.com/repository/docker/mahraurdarshil89/nest-js-basics/general))
 
 
 🌐 **Follow me on [GitHub](https://github.com/darshil89) for more projects and updates!**
