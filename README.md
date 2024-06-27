@@ -1,73 +1,28 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Building Backend with NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![NestJS Logo](https://nestjs.com/img/logo_text.svg)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Introduction
 
-## Description
+NestJS is a popular open-source, back-end framework for Node.js and TypeScript-based, server-side applications. It is a modular and adaptable framework that allows developers to easily organize their code into smaller and reusable modules. It also includes a robust dependency injection framework that simplifies managing application components and dependencies.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 💡 About the Project 
 
-## Installation
+This is a simple project with a restful api using NestJS where I have learnt how it drastically reduces the errors involved with Type-checking and Type inconsistencies when using JavaScript to build large-scale applications.
 
-```bash
-$ npm install
-```
+## 🌟 Why Use NestJS?
 
-## Running the app
+NestJS offers several compelling features that make it an excellent choice for building backend applications:
 
-```bash
-# development
-$ npm run start
+- **🛠️ Modular Architecture**: Allows for easy code organization and reusability.
+- **📘 TypeScript**: Building scalable and maintainable enterprise-ready applications is a breeze because it uses modern technologies such as TypeScript, bullet-proof architectural patterns.
+- **💉 Dependency Injection**: Facilitates scalable and maintainable application design.
+- **🔒 Built-in Security**: Provides various out-of-the-box features for securing your application.
+- **📈 Performance**: Optimized for performance with a highly efficient runtime.
 
-# watch mode
-$ npm run start:dev
+## 🐳 Creating and Deploying a Docker Image
 
-# production mode
-$ npm run start:prod
-```
+As a DevOps enthusiast, it was practically impossible for me to resist containerizing this application! 🐳 Therefore, this app is dockerized with both development and production builds. 🚀💻
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+🌐 **Follow me on [GitHub](https://github.com/darshil89) for more projects and updates!**
